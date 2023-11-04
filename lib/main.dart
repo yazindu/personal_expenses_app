@@ -6,6 +6,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter App',
       home: MyHomePage(),
     );
@@ -19,9 +20,18 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flutter App'),
       ),
-      body: const Center(
-        child: Text('Widget Playground!'),
-      ),
+      body: Column(children: <Widget>[
+        Container(
+          width: double.infinity,
+          child: Card(
+            color: Colors.amberAccent,
+            child: Text('Chart!'),
+          ),
+        ),
+        Card(
+          child: Text('List of Transactions'),
+        ),
+      ]),
     );
   }
 }
