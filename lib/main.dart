@@ -28,9 +28,9 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Flutter App'),
       ),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
+          children: [
             Container(
               width: double.infinity,
               child: Card(
@@ -43,7 +43,22 @@ class MyHomePage extends StatelessWidget {
               child: Column(
                 children: transactions.map((transaction) {
                   return Card(
-                    child: Text(transaction.title),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          transaction.amount.toString(),
+                        ),
+                        Column(
+                          children: [
+                            Text(transaction.title),
+                            Text(
+                              transaction.date.toString(),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   );
                 }).toList(),
               ),
