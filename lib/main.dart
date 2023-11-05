@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Flutter App'),
       ),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
@@ -39,7 +39,28 @@ class MyHomePage extends StatelessWidget {
                 child: Text('Chart!'),
               ),
             ),
+            Card(
+              child: Container(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Amount'),
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text('Add Transaction',
+                            style: TextStyle(color: Colors.purple),),)
+                  ],
+                ),
+              ),
+            ),
             Column(
+              //TODO redundant! remove this Column and spread the transactions card array ...
               children: transactions.map((transaction) {
                 return Card(
                   child: Row(
