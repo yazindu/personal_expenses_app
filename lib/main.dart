@@ -44,10 +44,18 @@ class MyHomePage extends StatelessWidget {
                 children: transactions.map((transaction) {
                   return Card(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          transaction.amount.toString(),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black, width: 2),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            transaction.amount.toString(),
+                          ),
                         ),
                         Column(
                           children: [
