@@ -9,8 +9,10 @@ class NewTransaction extends StatelessWidget {
 
   void submitDate(){
     final enteredData = titleController.text;
-    final enteredAmount = titleController.text;
-    onPressedHandler(titleController.text, double.parse(amountController.text));
+    final enteredAmount = double.parse(amountController.text);
+    onPressedHandler(enteredData, enteredAmount);
+
+    if(enteredData.isEmpty || enteredAmount <= 0) return;
   }
 
   @override
@@ -24,12 +26,13 @@ class NewTransaction extends StatelessWidget {
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
               controller: titleController,
+              onSubmitted: (_) => submitDate(),
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
               keyboardType: TextInputType.number,
-              onSubmitted: (_) => submitDate,
+              onSubmitted: (_) => submitDate(),
             ),
             TextButton(
               onPressed: submitDate,
