@@ -20,19 +20,30 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter App'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.add),
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){},
       ),
       body: ListView(
-          children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.amberAccent,
-                child: Text('Chart!'),
-              ),
+        children: [
+          Container(
+            width: double.infinity,
+            child: Card(
+              color: Colors.amberAccent,
+              child: Text('Chart!'),
             ),
-            UserTransactions(),
-          ],
-        ),
+          ),
+          UserTransactions(),
+        ],
+      ),
     );
   }
 }
