@@ -12,7 +12,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.purple,
+        // colorScheme: Theme.of(context).colorScheme.copyWith(
+        //   secondary: Colors.amber,
+        // ),
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(titleLarge: TextStyle(fontFamily: 'OpenSans', fontWeight: FontWeight.bold, fontSize: 18)),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(fontFamily: 'OpenSans', fontSize: 20, fontWeight: FontWeight.bold),
+          toolbarTextStyle: TextStyle(fontFamily: 'OpenSans', fontSize: 20),
+        ),
       ),
       home: MyHomePage(),
     );
@@ -25,7 +34,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final List<Transaction> _userTransactions = [
     Transaction(
       id: 't1',
@@ -55,16 +63,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _startAddNewTransaction(BuildContext context) {
-    showModalBottomSheet(context: context, builder: (_) {
-      return NewTransaction(_addNewTransaction);
-    });
+    showModalBottomSheet(
+        context: context,
+        builder: (_) {
+          return NewTransaction(_addNewTransaction);
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Personal Expenses'),
+        title: const Text(
+          'Personal Expenses',
+          style: TextStyle(fontFamily: 'Open Sans'),
+        ),
         actions: [
           IconButton(
             onPressed: () {
