@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import '../models/transaction.dart';
@@ -14,9 +15,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         fontFamily: 'Quicksand',
-        textTheme: ThemeData.light().textTheme.copyWith(titleLarge: TextStyle(fontFamily: 'OpenSans', fontWeight: FontWeight.bold, fontSize: 18)),
+        textTheme: ThemeData.light().textTheme.copyWith(
+            titleLarge: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18)),
         appBarTheme: AppBarTheme(
-          titleTextStyle: TextStyle(fontFamily: 'OpenSans', fontSize: 20, fontWeight: FontWeight.bold),
+          titleTextStyle: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
           toolbarTextStyle: TextStyle(fontFamily: 'OpenSans', fontSize: 20),
         ),
       ),
@@ -45,6 +53,16 @@ class _MyHomePageState extends State<MyHomePage> {
     //   date: DateTime.now(),
     // ),
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((element) {
+      return element.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
 
   void _addNewTransaction(String title, double amount) {
     final newTransaction = Transaction(
@@ -97,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
             width: double.infinity,
             child: Card(
               color: Theme.of(context).primaryColorLight,
-              child: Text('Chart!'),
+              child: Chart(_recentTransactions),
             ),
           ),
           TransactionList(_userTransactions),
